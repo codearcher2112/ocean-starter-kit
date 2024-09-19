@@ -37,12 +37,12 @@
     "hooks": {
       "pre-commit": "lint-staged",
       "pre-push": "npm run lint && npm run format"
-    },
-    "lint-staged": {
-      "src/**/*.{ts,tsx,js,jsx}": [
-        "npm run lint",
-        "npm run format"
-      ]
     }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "npm run lint",
+      "npm run format"
+    ]
   }
 }
