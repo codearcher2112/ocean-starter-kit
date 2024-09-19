@@ -1,6 +1,8 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript", "prettier"],
+  "extends": ["plugin:prettier/recommended", "next/core-web-vitals", "next/typescript", "prettier"],
+  "plugins": ["prettier"],
   "rules": {
+    "prettier/prettier": "error",
     "prefer-arrow-callback": ["error"],
     "prefer-template": ["error"],
     "semi": ["error"],

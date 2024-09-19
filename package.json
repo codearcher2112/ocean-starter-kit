@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "format": "prettier src/ --write"
+    "lint": "eslint src --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext js,jsx,ts,tsx --fix",
+    "format": "prettier src/ --write",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "14.2.12",
@@ -22,10 +24,25 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.12",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && npm run format"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "npm run lint",
+      "npm run format"
+    ]
   }
 }
